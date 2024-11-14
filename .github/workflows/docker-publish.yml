@@ -28,10 +28,3 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/sample-app:latest
 
-      - name: Trigger Argo CD sync
-        run: |
-          argocd app sync sample-app
-        env:
-          ARGOCD_SERVER: localhost:8080
-          ARGOCD_USERNAME: ${{ secrets.ARGOCD_USERNAME }}
-          ARGOCD_PASSWORD: ${{ secrets.ARGOCD_PASSWORD }}
